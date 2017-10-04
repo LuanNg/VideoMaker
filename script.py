@@ -1,8 +1,9 @@
 # libraries
-from moviepy.editor import AudioFileClip, VideoFileClip, ImageClip, CompositeVideoClip
-from PIL import Image
-import sys
 import os
+import sys
+
+from PIL import Image
+from moviepy.editor import AudioFileClip, VideoFileClip, ImageClip, CompositeVideoClip
 
 # load parameters
 '''
@@ -34,7 +35,7 @@ try:
     Image.open(params[1])
     check = "audio"
     AudioFileClip(params[2])
-except:
+except: 
     print ("Couldn't load " + check + "file")
     quit()
 
