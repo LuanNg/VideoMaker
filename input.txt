@@ -1,0 +1,8 @@
+movie.mp4
+boy.jpg
+audio.mp3
+1 0
+1.0
+20
+5
+0 0 10 100
