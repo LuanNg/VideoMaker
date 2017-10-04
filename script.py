@@ -1,9 +1,10 @@
-#libraries
+# libraries
 from moviepy.editor import AudioFileClip, VideoFileClip, ImageClip, CompositeVideoClip
 from PIL import Image
-import sys, os
+import sys
+import os
 
-#load parameters
+# load parameters
 '''
 video (string)
 image (string)
@@ -14,10 +15,10 @@ start image clip (sec)
 duration  (sec)
 OPTIONAL: crop image (left upper right lower)
 '''
-#from command line
-if len (sys.argv) > 6:
+# from command line
+if len(sys.argv) > 6:
     params = sys.argv
-#or from file
+# or from file
 elif os.path.isfile("input.txt"):
     with open("input.txt") as file:
         params = [row.strip() for row in file]
@@ -25,7 +26,7 @@ else:
     print ("Cannot load parameters")
     quit()
 
-#check files
+# check files
 try:
     check = "video"
     VideoFileClip(params[0])
@@ -34,10 +35,10 @@ try:
     check = "audio"
     AudioFileClip(params[2])
 except:
-    print ("Couldn't find " + check)
+    print ("Couldn't load " + check + "file")
     quit()
 
-#set params
+# set params
 try:
     pos = map(int, params[3].split())
 except ValueError:
@@ -49,7 +50,7 @@ duration = int(params[6])
 audio = AudioFileClip(params[2])
 video = VideoFileClip(params[0]).set_audio(audio)
 
-#crop image if needed
+# crop image if needed
 if len(params) == 8:
     image = Image.open(params[1])
     area = map(int, params[7].split())
@@ -57,8 +58,8 @@ if len(params) == 8:
     image.save(params[1])
 image = (ImageClip(params[1]).set_duration(duration).resize(size))
 
-#mix video
-if isinstance( pos[0], int ):
+# mix video
+if isinstance(pos[0], int):
     final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1])).set_start(start)])
 else:
     final_clip = CompositeVideoClip([video, image.set_pos(pos).set_start(start)])
