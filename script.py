@@ -15,7 +15,7 @@ duration  (sec)
 OPTIONAL: crop image (left upper right lower)
 '''
 #from command line
-if len (sys.argv) > 1:
+if len (sys.argv) > 6:
     params = sys.argv
 #or from file
 elif os.path.isfile("input.txt"):
@@ -58,8 +58,8 @@ if len(params) == 8:
 image = (ImageClip(params[1]).set_duration(duration).resize(size))
 
 #mix video
-try:
+if isinstance( pos[0], int ):
     final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1])).set_start(start)])
-except ValueError:
+else:
     final_clip = CompositeVideoClip([video, image.set_pos(pos).set_start(start)])
 final_clip.write_videofile("output.mp4")
