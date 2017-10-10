@@ -8,9 +8,12 @@ from moviepy.editor import AudioFileClip, VideoFileClip, CompositeVideoClip, Ima
 # load parameters
 '''
 parameter /value/
+
+mode /preview/ or /render/
 video /string/
 image /string/
 audio /string/
+keyImage /none/ or /path/
 position /top/bottom/left/right/ or /X Y/  top left corner or /auto R G B/ + /int/ accuracy
 resize /float/ 1.0 = 100% or /auto/ need position auto
 start image clip /sec/
@@ -32,11 +35,11 @@ else:
 # check files
 try:
     check = "video"
-    os.path.isfile(params[0])
-    check = "image"
     os.path.isfile(params[1])
-    check = "audio"
+    check = "image"
     os.path.isfile(params[2])
+    check = "audio"
+    os.path.isfile(params[3])
 except:
     print ("Couldn't load " + check + "file")
     quit()
@@ -46,29 +49,31 @@ autoPos = False
 autoSize = False
 keyingArea = [0, 0], [0, 0], [0, 0], [0, 0]
 try:
-    pos = map(int, params[3].split())
+    pos = map(int, params[5].split())
 except ValueError:
-    if "auto" in params[3]:
-        pos = params[3]
+    if "auto" in params[5]:
+        pos = params[5]
         pos = pos[5:len(pos)]
         autoPos = True
     else:
-        pos = params[3]
+        pos = params[5]
 try:
-    size = float(params[4])
+    size = float(params[6])
 except ValueError:
-    if "auto" in params[4]:
+    if "auto" in params[6]:
         autoSize = True
-start = float(params[5])
-duration = float(params[6])
+start = float(params[7])
+duration = float(params[8])
 
-audio = AudioFileClip(params[2])
-video = VideoFileClip(params[0]).set_audio(audio)
+audio = AudioFileClip(params[3])
+video = VideoFileClip(params[1]).set_audio(audio)
 
 # auto positioning image
 if autoPos:
-    video.save_frame("keyingImage.jpg", t=start)
-    imageKeying = Image.open("keyingImage.jpg")
+    if params[5] != "none":
+        imageKeying = Image.open(params[4])
+    else:
+        video.save_frame("keyingImage.jpg", t=start)
     colorToKey = map(int, pos.split())
     accuracy = colorToKey[3]
     del colorToKey[3]
@@ -111,10 +116,9 @@ if autoPos:
 
     keyingArea[3][0] = keyingArea[1][0]
     keyingArea[3][1] = keyingArea[2][1]
-    print (keyingArea)
     pos = keyingArea[0]
 
-image = ImageClip(params[1]).set_duration(duration)
+image = ImageClip(params[2]).set_duration(duration)
 
 # autoscale image
 if autoSize:
@@ -124,27 +128,36 @@ image = image.resize(size)
 image.save_frame("1.jpg", t=0)
 
 # crop image if needed
-if len(params) == 8:
+if len(params) == 11:
     image = Image.open("1.jpg")
     width, height = image.size
     widthNeed = keyingArea[3][0] - keyingArea[0][0]
     try:
-        area = map(int, params[7].split())
+        area = map(int, params[10].split())
     except ValueError:
-        if "center" in params[7]:
+        if "center" in params[10]:
             area = [0 + (width - widthNeed) / 2, 0, width - (width - widthNeed) / 2,
                     keyingArea[3][1] - keyingArea[0][1]]
-        elif "left" in params[7]:
+        elif "left" in params[10]:
             area = [0, 0, widthNeed, keyingArea[3][1] - keyingArea[0][1]]
         elif "right" in params:
             area = [0 + (width - widthNeed), 0, width - 1, keyingArea[3][1] - keyingArea[0][1]]
     image = image.crop(area)
-    image.save(params[1])
-image = ImageClip(params[1]).set_duration(duration)
+    image.save(params[2])
+image = ImageClip(params[2]).set_duration(duration)
 
 # mix video
-if isinstance(pos[0], int):
-    final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1])).set_start(start)])
+
+if params[0] == "render":
+    if isinstance(pos[0], int):
+        final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1])).set_start(start)])
+    else:
+        final_clip = CompositeVideoClip([video, image.set_pos(pos).set_start(start)])
+    final_clip.write_videofile("output.mp4")
 else:
-    final_clip = CompositeVideoClip([video, image.set_pos(pos).set_start(start)])
-final_clip.write_videofile("output.mp4")
+    video = video.subclip(start, start + 10)
+    if isinstance(pos[0], int):
+        final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1]))])
+    else:
+        final_clip = CompositeVideoClip([video, image.set_pos(pos)])
+    final_clip.save_frame("previewFrame.png", t=1)
