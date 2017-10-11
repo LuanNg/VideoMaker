@@ -1,0 +1,10 @@
+render
+C:\Users\Nikita\IdeaProjects\videoMaker\movie_2.mp4
+C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\bin\Debug\boy.jpg
+C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\bin\Debug\audio.mp3
+C:\Users\Nikita\IdeaProjects\videoMaker\keyingImage.jpg
+auto 25 25 255 180
+auto
+138
+2.8
+Нет

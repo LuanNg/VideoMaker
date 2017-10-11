@@ -1,7 +1,0 @@
-movie.mp4
-boy.jpg
-audio.mp3
-center
-1.0
-20
-5
