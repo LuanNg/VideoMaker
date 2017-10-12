@@ -3,7 +3,7 @@ import os
 import sys
 
 from PIL import Image
-from moviepy.editor import AudioFileClip, VideoFileClip, CompositeVideoClip, ImageClip
+from moviepy.editor import *
 
 # load parameters
 '''
@@ -18,6 +18,7 @@ position /top/bottom/left/right/ or /X Y/  top left corner or /auto R G B/ + /in
 resize /float/ 1.0 = 100% or /auto/ need position auto
 start image clip /sec/
 duration  /sec/
+saveDirectory /path/
 OPTIONAL: crop image /left upper right lower/ or /left/center/right/ need position auto
 '''
 # from command line
@@ -128,7 +129,7 @@ image = image.resize(size)
 image.save_frame("1.jpg", t=0)
 
 # crop image if needed
-if len(params) == 11:
+if len(params) > 10:
     image = Image.open("1.jpg")
     width, height = image.size
     widthNeed = keyingArea[3][0] - keyingArea[0][0]
@@ -153,7 +154,7 @@ if params[0] == "render":
         final_clip = CompositeVideoClip([video, image.set_pos((pos[0], pos[1])).set_start(start)])
     else:
         final_clip = CompositeVideoClip([video, image.set_pos(pos).set_start(start)])
-    final_clip.write_videofile("output.mp4")
+    final_clip.write_videofile(params[9])
 else:
     video = video.subclip(start, start + 10)
     if isinstance(pos[0], int):

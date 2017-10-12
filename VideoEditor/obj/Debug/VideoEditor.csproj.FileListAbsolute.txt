@@ -7,3 +7,12 @@ C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\obj\Debug\VideoEditor.cspro
 C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\obj\Debug\VideoEditor.csproj.CoreCompileInputs.cache
 C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\obj\Debug\VideoEditor.exe
 C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\obj\Debug\VideoEditor.pdb
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\bin\Debug\VideoEditor.exe
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\bin\Debug\VideoEditor.pdb
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.csprojResolveAssemblyReference.cache
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.Form1.resources
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.Properties.Resources.resources
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.csproj.GenerateResource.Cache
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.csproj.CoreCompileInputs.cache
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.exe
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\obj\Debug\VideoEditor.pdb

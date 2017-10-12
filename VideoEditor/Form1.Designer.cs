@@ -55,6 +55,8 @@
             this.Accuracy = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,7 +165,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(392, 340);
+            this.button1.Location = new System.Drawing.Point(361, 338);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 26);
             this.button1.TabIndex = 11;
@@ -214,11 +216,11 @@
             // 
             // RenderButton
             // 
-            this.RenderButton.Location = new System.Drawing.Point(582, 338);
+            this.RenderButton.Location = new System.Drawing.Point(521, 338);
             this.RenderButton.Name = "RenderButton";
-            this.RenderButton.Size = new System.Drawing.Size(135, 26);
+            this.RenderButton.Size = new System.Drawing.Size(196, 26);
             this.RenderButton.TabIndex = 16;
-            this.RenderButton.Text = "Рендер";
+            this.RenderButton.Text = "Рендер(Сохранить как output.mp4)";
             this.RenderButton.UseVisualStyleBackColor = true;
             this.RenderButton.Click += new System.EventHandler(this.RenderButton_Click);
             // 
@@ -276,7 +278,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(197, 340);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 43);
+            this.button3.Size = new System.Drawing.Size(135, 56);
             this.button3.TabIndex = 23;
             this.button3.Text = "Загрузить настройки из файла";
             this.button3.UseVisualStyleBackColor = true;
@@ -291,11 +293,26 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Made by Itis.team";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(562, 370);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(155, 26);
+            this.button4.TabIndex = 25;
+            this.button4.Text = "Рендер(Сохранить как...)";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "*.mp4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 532);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Accuracy);
@@ -358,6 +375,8 @@
         private System.Windows.Forms.TextBox Accuracy;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
