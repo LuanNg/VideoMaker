@@ -1,10 +1,11 @@
-render
+preview
 C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\bin\Debug\movie_2.mp4
-C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\bin\Debug\boy.jpg
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\bin\Debug\ccm_st_2.0_3.jpg
 C:\Users\Nikita\source\repos\VideoEditor\VideoEditor\bin\Debug\audio.mp3
-C:\Users\Nikita\IdeaProjects\videoMaker\keyingImage.jpg
-
+C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\bin\Debug\keyingImage.jpg
+auto 255 255 255 10
 auto
 138
 2.8
-C:\Users\Nikita\source\repos\VideoMaker_Repo\VideoEditor\bin\Debug\output.jpg
+output.mp4
+center

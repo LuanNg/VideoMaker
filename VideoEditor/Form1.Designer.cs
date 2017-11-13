@@ -57,6 +57,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.Scale_text = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,7 +143,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(405, 435);
+            this.label2.Location = new System.Drawing.Point(376, 435);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 8;
@@ -157,7 +159,7 @@
             // 
             // Duration_text
             // 
-            this.Duration_text.Location = new System.Drawing.Point(404, 470);
+            this.Duration_text.Location = new System.Drawing.Point(379, 470);
             this.Duration_text.Name = "Duration_text";
             this.Duration_text.Size = new System.Drawing.Size(81, 20);
             this.Duration_text.TabIndex = 10;
@@ -195,7 +197,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(537, 435);
+            this.label3.Location = new System.Drawing.Point(518, 435);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 14;
@@ -209,7 +211,7 @@
             "По центру",
             "По правому краю",
             "По левому краю"});
-            this.Crop_list.Location = new System.Drawing.Point(540, 451);
+            this.Crop_list.Location = new System.Drawing.Point(491, 451);
             this.Crop_list.Name = "Crop_list";
             this.Crop_list.Size = new System.Drawing.Size(120, 56);
             this.Crop_list.TabIndex = 15;
@@ -307,11 +309,30 @@
             // 
             this.saveFileDialog1.DefaultExt = "*.mp4";
             // 
+            // Scale_text
+            // 
+            this.Scale_text.Location = new System.Drawing.Point(632, 470);
+            this.Scale_text.Name = "Scale_text";
+            this.Scale_text.Size = new System.Drawing.Size(85, 20);
+            this.Scale_text.TabIndex = 26;
+            this.Scale_text.Text = "auto";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(647, 435);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Масштаб";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 532);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Scale_text);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
@@ -377,6 +398,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox Scale_text;
+        private System.Windows.Forms.Label label7;
     }
 }
 

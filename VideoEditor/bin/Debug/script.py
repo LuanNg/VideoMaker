@@ -120,32 +120,38 @@ if autoPos:
     pos = keyingArea[0]
 
 image = ImageClip(params[2]).set_duration(duration)
-
 # autoscale image
 if autoSize:
-    size = float(round((keyingArea[2][1] - keyingArea[0][1]), 100) / image.h)
-
+    print(str(keyingArea[0][0])+" "+ str(keyingArea[0][1]))
+    print(str(keyingArea[1][0])+" "+ str(keyingArea[1][1]))
+    print(str(keyingArea[2][0])+" "+ str(keyingArea[2][1]))
+    print(str(keyingArea[3][0])+" "+ str(keyingArea[3][1]))
+    size = float(round((keyingArea[2][1] - keyingArea[0][1]), 100)/image.h)
 image = image.resize(size)
 image.save_frame("1.jpg", t=0)
-
 # crop image if needed
 if len(params) > 10:
-    image = Image.open("1.jpg")
+    if autoSize:
+        image = Image.open("1.jpg")
+    else:
+        image = Image.open(params[2])
     width, height = image.size
     widthNeed = keyingArea[3][0] - keyingArea[0][0]
+    heightNeed = keyingArea[3][1] - keyingArea[0][1]
     try:
         area = map(int, params[10].split())
     except ValueError:
         if "center" in params[10]:
             area = [0 + (width - widthNeed) / 2, 0, width - (width - widthNeed) / 2,
-                    keyingArea[3][1] - keyingArea[0][1]]
+                    heightNeed]
         elif "left" in params[10]:
-            area = [0, 0, widthNeed, keyingArea[3][1] - keyingArea[0][1]]
-        elif "right" in params:
-            area = [0 + (width - widthNeed), 0, width - 1, keyingArea[3][1] - keyingArea[0][1]]
+            area = [0, 0, widthNeed, heightNeed]
+        elif "right" in params[10]:
+            area = [0 + (width - widthNeed), 0, width - 1, heightNeed]
     image = image.crop(area)
-    image.save(params[2])
-image = ImageClip(params[2]).set_duration(duration)
+    image.save("1.jpg")
+image = ImageClip("1.jpg").set_duration(duration)
+
 
 # mix video
 

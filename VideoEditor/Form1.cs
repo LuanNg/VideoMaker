@@ -117,6 +117,7 @@ namespace VideoEditor
             File.Delete("previewFrame.png");
             start = Start_text.Text;
             duration = Duration_text.Text;
+            size = Scale_text.Text;
             try
             {
                 if (Crop_list.SelectedItem.Equals("По правому краю"))
@@ -139,7 +140,6 @@ namespace VideoEditor
             catch {
                 crop = "none";
             }
-            size = "auto";
             pos = "auto " + Color_R.Text + " " + Color_G.Text + " " + Color_B.Text + " " + Accuracy.Text;
             //String args = "preview \r\nmovie_2.mp4 \r\nboy.jpg \r\naudio.mp3 \r\nkeyingImage.jpg \r\n" +
             //              "auto 25 26 254 180 \r\nauto \r\n139.2 \r\n3";
@@ -148,13 +148,13 @@ namespace VideoEditor
             {
                 args = mode + "\r\n" + pathVideo + "\r\n" + pathImage + "\r\n" + pathAudio + "\r\n" +
                     pathKeyImage + "\r\n" + pos + "\r\n" + size + "\r\n" + start + "\r\n" +
-                    duration + "\r\n" + crop;
+                    duration + "\r\n"+fileName + "\r\n";
             }
             else
             {
                 args = mode + "\r\n" + pathVideo + "\r\n" + pathImage + "\r\n" + pathAudio + "\r\n" +
                     pathKeyImage + "\r\n" + pos + "\r\n" + size + "\r\n" + start + "\r\n" +
-                    duration;
+                    duration + "\r\n"+fileName + "\r\n" + crop;
             }
             System.IO.File.WriteAllText("input.txt", args);
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
@@ -262,6 +262,8 @@ namespace VideoEditor
                                 catch { }
                                 break;
                             case 6:
+                                size = temp;
+                                Scale_text.Text = temp;
                                 break;
                             case 7:
                                 try
@@ -280,6 +282,8 @@ namespace VideoEditor
                                 catch { }
                                 break;
                             case 9:
+                                break;
+                            case 10:
                                 try
                                 {
                                     crop = temp;
@@ -387,13 +391,13 @@ namespace VideoEditor
             {
                 args = mode + "\r\n" + pathVideo + "\r\n" + pathImage + "\r\n" + pathAudio + "\r\n" +
                     pathKeyImage + "\r\n" + pos + "\r\n" + size + "\r\n" + start + "\r\n" +
-                    duration + "\r\n" + fileName + "\r\n"+ crop;
+                    duration + "\r\n" + fileName;
             }
             else
             {
                 args = mode + "\r\n" + pathVideo + "\r\n" + pathImage + "\r\n" + pathAudio + "\r\n" +
                     pathKeyImage + "\r\n" + pos + "\r\n" + size + "\r\n" + start + "\r\n" +
-                    duration + "\r\n" + fileName;
+                    duration + "\r\n" + fileName + "\r\n" + crop;
             }
             System.IO.File.WriteAllText("input.txt", args);
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
